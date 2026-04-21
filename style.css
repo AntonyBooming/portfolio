@@ -1,10 +1,9 @@
 :root {
   --color-accent: oklch(65% 50% 0);
-    color-scheme: light dark;
-
 }
 
 html {
+  color-scheme: light dark;
   accent-color: var(--color-accent);
 }
 
@@ -38,7 +37,6 @@ nav a:hover {
   border-bottom: 0.4em solid var(--color-accent);
   padding-bottom: 0.1em;
   background-color: color-mix(in oklch, var(--color-accent), canvas 85%);
-
 }
 
 nav a.current {
