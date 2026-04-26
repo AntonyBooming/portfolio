@@ -104,5 +104,12 @@ h1, h2, h3, h4, h5, h6 {
 .projects img {
   width: 100%;
   height: 150px;
+  min-height: 150px;
   object-fit: cover;
+}
+
+.year {
+  font-size: 0.9rem;
+  color: gray;
+  margin-bottom: 0.5rem;
 }
