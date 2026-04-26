@@ -85,7 +85,7 @@ h1, h2, h3, h4, h5, h6 {
 .projects article {
   display: grid;
   grid-template-rows: subgrid;
-  grid-row: span 3;
+  grid-row: span 4;
   gap: 1em;
 }
 
