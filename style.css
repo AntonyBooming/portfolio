@@ -113,3 +113,18 @@ h1, h2, h3, h4, h5, h6 {
   color: gray;
   margin-bottom: 0.5rem;
 }
+
+.project-year {
+  font-family: Baskerville, serif;
+  font-variant-numeric: oldstyle-nums;
+  font-style: italic;
+  color: #999;
+  font-size: 0.9rem;
+  margin-top: 4px;
+}
+
+#projects-pie-plot {
+    max-width: 20em;
+    margin-block: 2em;
+    overflow: visible;
+}
