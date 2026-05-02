@@ -10,6 +10,7 @@ const projectsContainer = document.querySelector('.projects');
 
 let arcGenerator = d3.arc().innerRadius(0).outerRadius(50);
 let colors = d3.scaleOrdinal(d3.schemeTableau10);
+let selectedIndex = -1;
 
 function renderPieChart(projectsGiven) {
     let newSVG = d3.select('svg#projects-pie-plot');
@@ -29,8 +30,6 @@ function renderPieChart(projectsGiven) {
     let newSliceGenerator = d3.pie().value((d) => d.value);
     let newArcData = newSliceGenerator(newData);
     let newArcs = newArcData.map((d) => arcGenerator(d));
-
-    let selectedIndex = -1;
 
     newArcs.forEach((arc, idx) => {
         newSVG.append('path')
