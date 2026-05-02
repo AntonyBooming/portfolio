@@ -12,14 +12,15 @@ renderProjects(projects, projectsContainer, 'h2');
 let arcGenerator = d3.arc().innerRadius(0).outerRadius(50);
 let colors = d3.scaleOrdinal(d3.schemeTableau10);
 
-let data = [
-  { value: 1, label: 'apples' },
-  { value: 2, label: 'oranges' },
-  { value: 3, label: 'mangos' },
-  { value: 4, label: 'pears' },
-  { value: 5, label: 'limes' },
-  { value: 5, label: 'cherries' },
-];
+let rolledData = d3.rollups(
+  projects,
+  (v) => v.length,
+  (d) => d.year,
+);
+
+let data = rolledData.map(([year, count]) => {
+  return { value: count, label: year };
+});
 
 let sliceGenerator = d3.pie().value((d) => d.value);
 let arcData = sliceGenerator(data);
@@ -39,4 +40,15 @@ data.forEach((d, idx) => {
         .attr('style', `--color:${colors(idx)}`)
         .attr('class', 'legend-item')
         .html(`<span class="swatch"></span> ${d.label} <em>(${d.value})</em>`);
+});
+
+let query = '';
+
+let searchInput = document.querySelector('.searchBar');
+searchInput.addEventListener('input', (event) => {
+    query = event.target.value;
+    let filteredProjects = projects.filter((project) =>
+        project.title.toLowerCase().includes(query.toLowerCase())
+    );
+    renderProjects(filteredProjects, projectsContainer, 'h2');
 });
