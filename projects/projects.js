@@ -12,29 +12,24 @@ let arcGenerator = d3.arc().innerRadius(0).outerRadius(50);
 let colors = d3.scaleOrdinal(d3.schemeTableau10);
 
 function renderPieChart(projectsGiven) {
-    // clear svg and legend
     let newSVG = d3.select('svg#projects-pie-plot');
     newSVG.selectAll('path').remove();
     d3.select('.legend').selectAll('li').remove();
 
-    // re-calculate rolled data
     let newRolledData = d3.rollups(
         projectsGiven,
         (v) => v.length,
         (d) => d.year,
     );
 
-    // re-calculate data
     let newData = newRolledData.map(([year, count]) => {
         return { value: count, label: year };
     });
 
-    // re-calculate slices and arcs
     let newSliceGenerator = d3.pie().value((d) => d.value);
     let newArcData = newSliceGenerator(newData);
     let newArcs = newArcData.map((d) => arcGenerator(d));
 
-    // update paths
     let selectedIndex = -1;
 
     newArcs.forEach((arc, idx) => {
@@ -49,9 +44,17 @@ function renderPieChart(projectsGiven) {
 
                 legend.selectAll('li')
                     .attr('class', (_, i) => i === selectedIndex ? 'legend-item selected' : 'legend-item');
+
+                if (selectedIndex === -1) {
+                    renderProjects(projectsGiven, projectsContainer, 'h2');
+                } else {
+                    let selectedYear = newData[selectedIndex].label;
+                    let filteredProjects = projectsGiven.filter((p) => p.year === selectedYear);
+                    renderProjects(filteredProjects, projectsContainer, 'h2');
+                }
             });
     });
-    // update legend
+
     let legend = d3.select('.legend');
     newData.forEach((d, idx) => {
         legend
@@ -62,11 +65,9 @@ function renderPieChart(projectsGiven) {
     });
 }
 
-// render on page load
 renderProjects(projects, projectsContainer, 'h2');
 renderPieChart(projects);
 
-// search
 let query = '';
 let searchInput = document.querySelector('.searchBar');
 searchInput.addEventListener('input', (event) => {
