@@ -18,4 +18,4 @@ let arc = arcGenerator({
   endAngle: 2 * Math.PI,
 });
 
-d3.select('svg').append('path').attr('d', arc).attr('fill', 'red');
+d3.select('svg#projects-pie-plot').append('path').attr('d', arc).attr('fill', 'red');
