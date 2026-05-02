@@ -35,12 +35,22 @@ function renderPieChart(projectsGiven) {
     let newArcs = newArcData.map((d) => arcGenerator(d));
 
     // update paths
+    let selectedIndex = -1;
+
     newArcs.forEach((arc, idx) => {
         newSVG.append('path')
             .attr('d', arc)
-            .attr('fill', colors(idx));
-    });
+            .attr('fill', colors(idx))
+            .on('click', () => {
+                selectedIndex = selectedIndex === idx ? -1 : idx;
 
+                newSVG.selectAll('path')
+                    .attr('class', (_, i) => i === selectedIndex ? 'selected' : '');
+
+                legend.selectAll('li')
+                    .attr('class', (_, i) => i === selectedIndex ? 'legend-item selected' : 'legend-item');
+            });
+    });
     // update legend
     let legend = d3.select('.legend');
     newData.forEach((d, idx) => {
