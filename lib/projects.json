@@ -6,10 +6,11 @@
         "description": "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Magnam ad aut, pariatur cupiditate quae sit cum quas unde officia odio eius placeat laudantium in quasi adipisci praesentium tempora! Blanditiis, laborum."
     },
     {
-        "title": "Possimus tenetur et sequi?",
-        "year": "2024",
-        "image": "https://vis-society.github.io/labs/2/images/empty.svg",
-        "description": "Dignissimos corporis iure harum consequatur quisquam veritatis atque quos natus ut animi optio nemo nulla nostrum ipsum voluptates autem adipisci eligendi magnam officia accusantium alias, ea molestias suscipit voluptatum. Distinctio!"
+        "title": "Bikewatching",
+        "year": "2026",
+        "image": "../images/bikewatching.png",
+        "description": "An interactive map visualizing bike lanes and station traffic in Boston and Cambridge using Mapbox and D3.",
+        "url": "https://antonybooming.github.io/bikewatching"
     },
     {
         "title": "Provident placeat repellat nisi.",
