@@ -13,24 +13,30 @@
 
     <div style="display: flex; align-items: baseline; gap: 1rem;">
       <label for="commit-progress" style="white-space: nowrap;">Show commits until:</label>
-      <input type="range" id="commit-progress" min="0" max="100" value="100"
-             style="flex: 1;" />
+      <input type="range" id="commit-progress" min="0" max="100" value="100" style="flex: 1;" />
       <time id="commit-time" style="white-space: nowrap;"></time>
     </div>
 
-    <div id="stats"></div>
+    
+    <div id="scrolly-1">
+      <div id="scatter-story"></div>
+      <div id="scatter-plot">
+        <div id="stats"></div>
+        <dl id="commit-tooltip" class="info tooltip">
+          <dt>Commit</dt>
+          <dd><a href="" id="commit-link" target="_blank"></a></dd>
+          <dt>Date</dt>
+          <dd id="commit-date"></dd>
+        </dl>
+        <h2>Commits by time of day</h2>
+        <div id="chart"></div>
+        <p id="selection-count">No commits selected</p>
+        <dl id="language-breakdown" class="stats"></dl>
+      </div>
+    </div>
 
-    <dl id="commit-tooltip" class="info tooltip">
-        <dt>Commit</dt>
-        <dd><a href="" id="commit-link" target="_blank"></a></dd>
-        <dt>Date</dt>
-        <dd id="commit-date"></dd>
-    </dl>
 
-    <h2>Commits by time of day</h2>
-    <div id="chart"></div>
-    <p id="selection-count">No commits selected</p>
-    <dl id="language-breakdown" class="stats"></dl>
+    <dl id="files"></dl>
 
     <script src="main.js" type="module"></script>
   </body>
