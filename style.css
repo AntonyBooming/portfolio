@@ -8,9 +8,6 @@ html {
 }
 
 body {
-  /* Set line height to 1.5 times the font size
-	   and use the OS’s UI font as the website font
-	 */
   font: 100%/1.5 system-ui;
   max-width: 150ch;
   margin-inline: auto;
@@ -124,63 +121,59 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 #projects-pie-plot {
-    max-width: 20em;
-    margin-block: 2em;
-    overflow: visible;
+  max-width: 20em;
+  margin-block: 2em;
+  overflow: visible;
 }
 
 .container {
-    display: flex;
-    align-items: center;
-    gap: 2em;
+  display: flex;
+  align-items: center;
+  gap: 2em;
 }
 
 .legend {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(9em, 1fr));
-    list-style: none;
-    padding: 1em;
-    margin: 0;
-    border: 1px solid #ccc;
-    gap: 1em;
-    flex: 1;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(9em, 1fr));
+  list-style: none;
+  padding: 1em;
+  margin: 0;
+  border: 1px solid #ccc;
+  gap: 1em;
+  flex: 1;
 }
 
 .legend-item {
-    display: flex;
-    align-items: center;
-    gap: 0.5em;
+  display: flex;
+  align-items: center;
+  gap: 0.5em;
 }
 
 .swatch {
-    display: inline-block;
-    width: 1em;
-    height: 1em;
-    aspect-ratio: 1 / 1;
-    background-color: var(--color);
-    border-radius: 50%;
-    flex-shrink: 0;
+  display: inline-block;
+  width: 1em;
+  height: 1em;
+  aspect-ratio: 1 / 1;
+  background-color: var(--color);
+  border-radius: 50%;
+  flex-shrink: 0;
 }
 
 svg:has(path:hover) path:not(:hover) {
-    opacity: 0.5;
+  opacity: 0.5;
 }
 
 path {
-    transition: 300ms;
+  transition: 300ms;
+  cursor: pointer;
 }
 
 .selected {
-    --color: oklch(60% 45% 0) !important;
+  --color: oklch(60% 45% 0) !important;
 
-    &:is(path) {
-        fill: var(--color);
-    }
-}
-
-path {
-    transition: 300ms;
-    cursor: pointer;
+  &:is(path) {
+    fill: var(--color);
+  }
 }
 
 .gridlines line {
@@ -218,7 +211,7 @@ dl.info[hidden]:not(:hover, :focus-within) {
 }
 
 circle {
-  transition: 200ms;
+  transition: all 200ms;
   transform-origin: center;
   transform-box: fill-box;
 }
@@ -229,6 +222,10 @@ circle:hover {
 
 circle.selected {
   fill: #ff6b6b;
+}
+
+circle:is(.selected) {
+  fill: orange;
 }
 
 .selection {
@@ -245,6 +242,36 @@ circle.selected {
   }
 }
 
+@starting-style {
+  circle {
+    r: 0;
+  }
+}
+
+/* Stats horizontal layout */
+.stats {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 0.5em 1em;
+  margin: 1em 0;
+}
+
+.stats dt {
+  font-size: 0.75em;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  opacity: 0.7;
+  grid-row: 1;
+}
+
+.stats dd {
+  font-size: 2em;
+  font-weight: bold;
+  margin: 0;
+  grid-row: 2;
+}
+
+/* File unit visualization */
 #files {
   display: grid;
   grid-template-columns: 1fr 4fr;
@@ -279,6 +306,7 @@ circle.selected {
   border-radius: 50%;
 }
 
+/* Scrollytelling */
 #scrolly-1 {
   position: relative;
   display: flex;
@@ -291,6 +319,7 @@ circle.selected {
 
 #scatter-story {
   position: relative;
+  flex: 1;
 }
 
 #scatter-plot {
@@ -298,24 +327,11 @@ circle.selected {
   top: 0;
   left: 0;
   bottom: auto;
-  height: 50vh;
+  height: 100vh;
   overflow-y: auto;
+  flex: 2;
 }
 
 .step {
   padding-bottom: 4rem;
-}
-
-circle {
-  transition: all 200ms;
-}
-
-circle:is(.selected) {
-  fill: orange;
-}
-
-@starting-style {
-  circle {
-    r: 0;
-  }
 }
